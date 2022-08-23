@@ -1,21 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //Importamos nuestros commponentes
-import NavBarIni from "./components/NavBar";
+import NavBarIni from "./components/navegacion/NavBar";
+import ItemListContainer from "./components/contenedor/ItemListContainer"
 
 function App() {
   return (
     <div className="App">
 
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={ <NavBarIni /> }>
-
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <NavBarIni elementos='4'/>
+      <ItemListContainer greeting='HOLA SOY UN SALUDO'/>
 
     </div>
   );
