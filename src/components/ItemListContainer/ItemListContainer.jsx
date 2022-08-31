@@ -1,8 +1,19 @@
-const ItemListContainer = ({greeting}) => {
+import ItemCount from "../ItemCount/ItemCount"
+import { useState } from "react";
+
+
+const ItemListContainer = () => {
+  const [contador, setContador] = useState(1);
+  const onAdd = (p) =>{
+    setContador(contador + p)
+  }
+
   return (
-    <div>
-        <h1>{greeting}</h1>
-    </div>
+    <>
+
+      <ItemCount stock={5} initial={contador} onAdd={onAdd} />
+
+    </>
   )
 }
 

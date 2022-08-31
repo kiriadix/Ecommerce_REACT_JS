@@ -7,7 +7,7 @@ import './style.css'
 const NavBarIni = () => {
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" className='distancia'>
         <Container>
           <Navbar.Brand>
           <img
