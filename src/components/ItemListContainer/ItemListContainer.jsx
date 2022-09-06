@@ -1,17 +1,29 @@
-import ItemCount from "../ItemCount/ItemCount"
-import { useState } from "react";
+import data from "./data";
+import ItemList from "../ItemList/ItemList";
+import { useState, useEffect } from "react";
 
 
 const ItemListContainer = () => {
-  const [contador, setContador] = useState(1);
-  const onAdd = (p) =>{
-    setContador(contador + p)
-  }
+
+  const [productos, setProductos] = useState([]);
+
+  const traerData = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(data);
+    }, 2000);
+  })
+
+  useEffect(() => {
+    traerData.then((result) => {
+      setProductos(result);
+    })
+  }, [])
+  
 
   return (
     <>
 
-      <ItemCount stock={5} initial={contador} onAdd={onAdd} />
+      {<ItemList items={productos} />}
 
     </>
   )

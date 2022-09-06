@@ -11,12 +11,14 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 function App() {
   return (
     <>
-    <div className="App">
+      <div className="App">
 
-      <NavBarIni elementos='4'/>
-      <ItemListContainer/>    
+        <NavBarIni elementos='4'/>
 
-    </div>    
+        <ItemListContainer />
+        
+      </div>
+      
     </>
   );
 }
