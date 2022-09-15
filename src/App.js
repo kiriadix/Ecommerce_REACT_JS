@@ -1,4 +1,5 @@
 import './App.css';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 //Importamos nuestros commponentes
 import NavBarIni from "./components/NavBar/NavBar";
@@ -7,18 +8,22 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 
 function App() {
   return (
-    <>
-      <div className="App">
 
-        <NavBarIni elementos='4'/>
-        <ItemListContainer />
+    <div className="App">
 
-        <hr></hr>
-        
-        <ItemDetailContainer />
+      <BrowserRouter>
+        <NavBarIni carNum={0}/>
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/categorias/:id" element={<ItemListContainer />} />
+          <Route path="/item/:id" element={<ItemDetailContainer />} />
 
-      </div>
-    </>
+          <Route path="/*" element={<Navigate replace to="/" />} />
+        </Routes>
+      </BrowserRouter>
+
+    </div> 
+
   );
 }
 

@@ -19,6 +19,9 @@ const ItemDetail = ({item}) => {
             <Row>
               <h1>{item.title}</h1>
             </Row>
+            <Row className='price_color'>
+              <h3>{item.price}</h3>
+            </Row>
             <hr></hr>
             <Row>
               {<ItemCount stock={item.stock} onAdd={''}/>}

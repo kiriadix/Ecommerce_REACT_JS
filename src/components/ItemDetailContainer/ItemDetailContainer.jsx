@@ -1,8 +1,11 @@
 import ItemDetail from "../ItemDetail/ItemDetail"
 import data from "../ItemListContainer/data"
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
+
+  const {id} = useParams();
 
   const [producto, setProducto] = useState({});
 
@@ -14,9 +17,10 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     getItem.then((result) => {
-      setProducto(result[2]);
+      const newResult = result.filter(r=>r.id === parseInt(id));
+      setProducto(newResult[0]);
     })
-  }, [])
+  }, [id])
 
   return (
     <>
@@ -26,7 +30,6 @@ const ItemDetailContainer = () => {
         ) : (
           <ItemDetail item={producto}/>
         )
-        
       }
     </>
   )
