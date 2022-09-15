@@ -2,20 +2,25 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import { useState} from "react";
 
 
-const ItemCount = ({stock, initial, onAdd}) => {
+const ItemCount = ({stock, initial=1, onAdd}) => {
 
-    const Suma = () => {
-        if (initial < stock) {
-            onAdd(+1)
+    const [count, setCount] = useState(initial)
+
+    const suma = () => {
+        if (count < stock) {
+            setCount(count + 1)
         }
+        
     }
 
-    const Resta = () => {
-        if (initial > 1) {
-            onAdd(-1)
+    const resta = () => {
+        if (count > 1) {
+            setCount(count - 1)
         }
+        
     }
 
     return (
@@ -23,13 +28,11 @@ const ItemCount = ({stock, initial, onAdd}) => {
             <Container>
                 <Row className="justify-content-center align-items-center">
                     <Col xs lg="1">
-                        <Button variant="outline-primary" onClick={Resta}> - </Button>
+                        <Button variant="outline-primary" onClick={resta}>-</Button>
                     </Col>
-                    <Col md="auto">{initial}</Col>
+                    <Col md="auto">{count}</Col>
                     <Col xs lg="1">
-                        <Button variant="outline-primary" onClick={Suma}>
-                             + 
-                        </Button>
+                        <Button variant="outline-primary" onClick={suma}>+</Button>
                     </Col>
                 </Row>
                 <hr></hr>

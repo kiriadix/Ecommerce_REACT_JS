@@ -9,13 +9,13 @@ const ItemList = ({items}) => {
   return (
     <>
         <Container>
-            <Row className="justify-content-center align-items-center">
+            <Row className="align-items-center">
 
                 { items.map((articulo) => {
                     return (
-                        <Col md="auto" className="producto">
+                        <Col md="auto" className="producto" key={articulo.id}>
                             <Item
-                                key={articulo.id}
+                                id={articulo.id}
                                 title={articulo.title}
                                 description={articulo.description}
                                 price={articulo.price}

@@ -15,6 +15,7 @@ const data = [
     "title":"Ropero Milto",
     "description":"Ropero 3 Puertas Madera Maciza",
     "price":"$15990",
+    "stock":5,
     "picture":"https://www.lgamoblamientos.com/nv/wp-content/uploads/2020/06/933817bf-db78-4321-911a-32b4abe11a70.jpg"
     }
 ];
