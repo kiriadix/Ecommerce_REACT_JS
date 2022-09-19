@@ -5,6 +5,9 @@ import ItemCount from '../ItemCount/ItemCount';
 import "./style.css"
 
 const ItemDetail = ({item}) => {
+  const onAdd = (count) => {
+    alert(`Se agregaron: ${count} unidades de ${item.title}`)
+  }
  
   return (
     <>
@@ -24,7 +27,7 @@ const ItemDetail = ({item}) => {
             </Row>
             <hr></hr>
             <Row>
-              {<ItemCount stock={item.stock} onAdd={''}/>}
+              {<ItemCount stock={item.stock} onAdd={onAdd}/>}
             </Row>
           </Col>
 
