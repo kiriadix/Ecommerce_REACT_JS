@@ -2,11 +2,18 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import ItemCount from '../ItemCount/ItemCount';
+import React, {useContext} from 'react';
+import { CartContext } from '../context/CartContext';
 import "./style.css"
 
+
 const ItemDetail = ({item}) => {
+  const {addItem,items} = useContext(CartContext);
+
   const onAdd = (count) => {
-    alert(`Se agregaron: ${count} unidades de ${item.title}`)
+    alert(`Se agregaron: ${count} unidades de ${item.title}`);
+    addItem(item,count);
+    console.log(items);
   }
  
   return (

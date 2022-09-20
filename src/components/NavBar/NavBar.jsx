@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import './style.css'
 
 
-const NavBarIni = ({carNum}) => {
+const NavBarIni = () => {
   return (
     <>
       <Navbar bg="dark" variant="dark" className='distancia' sticky="top">
@@ -32,7 +32,7 @@ const NavBarIni = ({carNum}) => {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <CartWidget element={carNum}/>
+          <CartWidget/>
         </Container>
       </Navbar>
     </>
