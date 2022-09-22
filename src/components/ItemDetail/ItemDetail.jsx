@@ -8,12 +8,10 @@ import "./style.css"
 
 
 const ItemDetail = ({item}) => {
-  const {addItem,items} = useContext(CartContext);
+  const {addItem} = useContext(CartContext);
 
   const onAdd = (count) => {
-    alert(`Se agregaron: ${count} unidades de ${item.title}`);
     addItem(item,count);
-    console.log(items);
   }
  
   return (

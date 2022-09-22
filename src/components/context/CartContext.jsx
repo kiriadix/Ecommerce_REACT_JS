@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 
 export const CartContext = React.createContext();
 
-export const CartProvider = ({ defaulItems = [] ,children}) => {
-  const [items, setItems] = useState(defaulItems);
+export const CartProvider = ({ children }) => {
+  const [items, setItems] = useState([]);
 
   const addItem = (item, quantity) => {
     if (isInCart(item.id)) {
