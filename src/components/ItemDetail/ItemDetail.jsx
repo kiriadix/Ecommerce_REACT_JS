@@ -6,7 +6,6 @@ import React, {useContext} from 'react';
 import { CartContext } from '../context/CartContext';
 import "./style.css"
 
-
 const ItemDetail = ({item}) => {
   const {addItem} = useContext(CartContext);
 

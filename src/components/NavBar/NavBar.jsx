@@ -31,7 +31,7 @@ const NavBarIni = () => {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <CartWidget t = { 0 }/>
+          <CartWidget/>
         </Container>
       </Navbar>
     </>

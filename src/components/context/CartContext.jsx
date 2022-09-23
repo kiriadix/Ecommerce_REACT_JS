@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
     if (isInCart(item.id)) {
         for (let i = 0; i < items.length; i++) {
             let actual = items[i];
-            if (actual.id == item.id) {
+            if (actual.id === item.id) {
                 items[i].quantity += quantity;
             }
         }
@@ -32,10 +32,20 @@ export const CartProvider = ({ children }) => {
 
   const isInCart = (itemId) =>{
     return items.some((item) => item.id === itemId);
-  } 
+  }
+
+  const GetTotalPrice = () => {
+    const totalPrice = items.reduce((acc, item) => acc + (item.quantity * item.price),0);
+    return totalPrice;
+  }
+
+  const GetTotalItems = () => {
+    const totalItems = items.reduce((acc, item) => acc + item.quantity,0);
+    return totalItems;
+  }
   
   return (
-    <CartContext.Provider value={{items, addItem, removeItem, clear, totalItems:items.length}}>
+    <CartContext.Provider value={{items, addItem, removeItem, clear, GetTotalPrice, GetTotalItems}}>
         {children}
     </CartContext.Provider>
   )

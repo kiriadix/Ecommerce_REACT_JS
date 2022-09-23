@@ -3,11 +3,13 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { useState} from "react";
+import { Link } from 'react-router-dom';
 
 
 const ItemCount = ({stock, initial=1, onAdd}) => {
 
     const [count, setCount] = useState(initial)
+    const [compra, setCompra] = useState(false)
 
     const suma = () => {
         if (count < stock) {
@@ -24,7 +26,8 @@ const ItemCount = ({stock, initial=1, onAdd}) => {
     }
 
     const comprar = () => {
-        onAdd(count)
+        onAdd(count);
+        setCompra(true);
     }
 
     return (
@@ -41,9 +44,20 @@ const ItemCount = ({stock, initial=1, onAdd}) => {
                 </Row>
                 <hr></hr>
                 <Row className="justify-content-center align-items-center">
-                    <Col md="auto">
+                    <Col >
                         <Button variant="success" onClick={comprar}> Agregar al carrito </Button>
                     </Col>
+                    {
+                        compra === true &&
+                        <Col>
+                            <Link to={'/cart'}>
+                                <Button variant="warning" onClick={comprar}> Ir al carrito </Button>
+                            </Link>
+                        </Col>
+                    }
+                    
+                        
+                    
                 </Row>
             </Container>
         </>
