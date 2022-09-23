@@ -2,7 +2,7 @@ const data = [
     {"id":1,
     "title":"Ropero Ileus",
     "description":"Ropero de 3 Puertas con Espejo",
-    "price":"$19450",
+    "price":19450,
     "stock":4,
     "category":"3_puertas",
     "picture":"https://www.lgamoblamientos.com/nv/wp-content/uploads/2022/08/MILANO-1.jpg"
@@ -10,7 +10,7 @@ const data = [
     {"id":2,
     "title":"Ropero Luna",
     "description":"Ropero 2 Puertas con Espejo",
-    "price":"$7490",
+    "price":7490,
     "stock":4,
     "category":"2_puertas",
     "picture":"https://www.lgamoblamientos.com/nv/wp-content/uploads/2022/08/MOSCU-2-scaled.jpg"
@@ -18,7 +18,7 @@ const data = [
     {"id":3,
     "title":"Ropero Milto",
     "description":"Ropero 3 Puertas Madera Maciza",
-    "price":"$15990",
+    "price":15990,
     "stock":5,
     "category":"3_puertas",
     "picture":"https://www.lgamoblamientos.com/nv/wp-content/uploads/2020/06/933817bf-db78-4321-911a-32b4abe11a70.jpg"

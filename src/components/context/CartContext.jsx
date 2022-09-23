@@ -31,16 +31,11 @@ export const CartProvider = ({ children }) => {
   }
 
   const isInCart = (itemId) =>{
-    const newItems = items.filter((item) => item.id === itemId);
-    if (newItems.length > 0) {
-        return true;
-    } else {
-        return false;
-    }
-  }
+    return items.some((item) => item.id === itemId);
+  } 
   
   return (
-    <CartContext.Provider value={{items, addItem, removeItem, clear, totalItems:items.length }}>
+    <CartContext.Provider value={{items, addItem, removeItem, clear, totalItems:items.length}}>
         {children}
     </CartContext.Provider>
   )

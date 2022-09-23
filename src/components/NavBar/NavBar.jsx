@@ -7,7 +7,6 @@ import CartWidget from "../CartWidget/CartWidget"
 import { Link } from 'react-router-dom';
 import './style.css'
 
-
 const NavBarIni = () => {
   return (
     <>
@@ -32,7 +31,7 @@ const NavBarIni = () => {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <CartWidget/>
+          <CartWidget t = { 0 }/>
         </Container>
       </Navbar>
     </>

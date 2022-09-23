@@ -1,0 +1,13 @@
+.itemCard{
+    border-style: solid;
+    border-color: black;
+    border-radius: 50px;
+    margin: 15px;
+    padding: 10px;
+}
+
+.imgCard{
+    height: 50px;
+    width: 80x;
+
+}
