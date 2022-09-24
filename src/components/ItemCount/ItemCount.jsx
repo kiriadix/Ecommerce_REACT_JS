@@ -51,7 +51,7 @@ const ItemCount = ({stock, initial=1, onAdd}) => {
                         compra === true &&
                         <Col>
                             <Link to={'/cart'}>
-                                <Button variant="warning" onClick={comprar}> Ir al carrito </Button>
+                                <Button variant="warning"> Ir al carrito </Button>
                             </Link>
                         </Col>
                     }

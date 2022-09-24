@@ -5,12 +5,12 @@ import { CartContext } from '../context/CartContext';
 
 
 const CartWidget = () => {
-  const {GetTotalItems} = useContext(CartContext); 
+  const {totalItems} = useContext(CartContext); 
   return (
     <div>
       <Link to={'/cart'} style={{ textDecoration: 'none' }}>
         <img src={carrito} alt='carrito'/>
-        <span className='colornav'>{GetTotalItems()}</span>
+        <span className='colornav'>{totalItems}</span>
       </Link>
     </div>
   )
