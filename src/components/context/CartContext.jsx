@@ -8,12 +8,13 @@ export const CartProvider = ({ children }) => {
 
   const addItem = (item, quantity) => {
     if (isInCart(item.id)) {
-        for (let i = 0; i < items.length; i++) {
-            let actual = items[i];
-            if (actual.id === item.id) {
-                items[i].quantity += quantity;
-            }
-        }
+      let actual = {};
+      for (let i = 0; i < items.length; i++) {
+          actual = items[i];
+          if (actual.id === item.id) {
+              items[i].quantity += quantity;
+          }
+      }
     } else {
         item.quantity=quantity;
         items.push(item);

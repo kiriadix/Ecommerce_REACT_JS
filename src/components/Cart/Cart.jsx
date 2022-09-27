@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import "./style.css"
 import { Link } from 'react-router-dom';
+import CartItem from '../CartItem/CartItem';
 
 const Cart = () => {
   const {items, removeItem, clear, GetTotalPrice} = useContext(CartContext); 
@@ -32,15 +33,15 @@ const Cart = () => {
                 <> 
                   {items.map(item=>(
                       <Row className='itemCard align-items-center' key={item.id}>
-                        <Col>
-                          <img className="imgCard" src={item.picture} alt={item.title} />
-                        </Col>
-                        <Col><h4>{item.quantity}</h4></Col>
-                        <Col><h4>{item.title}</h4></Col>
-                        <Col><h4>${item.price}</h4></Col>                  
-                        <Col>
-                          <Button variant="danger" onClick={()=>removeItem(item.id)}>Eliminar</Button>
-                        </Col>          
+                        <CartItem 
+                          id={item.id}
+                          title={item.title}
+                          quantity={item.quantity}
+                          description={item.description}
+                          price={item.price}
+                          picture={item.picture}
+                          removeItem={removeItem}
+                        />  
                       </Row>
                   ))}
                   <Row className='align-items-center justify-content-center'>
