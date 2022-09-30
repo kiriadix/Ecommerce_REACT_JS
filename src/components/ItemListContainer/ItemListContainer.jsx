@@ -16,15 +16,13 @@ const ItemListContainer = () => {
 
     const response = await getDocs(query);
 
-    const newProducts = [];
-
-    response.docs.map(doc =>{
+    const newProducts = response.docs.map(doc =>{
       const newProduct = {
         ...doc.data(),
         id: doc.id
       }
 
-      newProducts.push(newProduct);
+      return newProduct;
 
     })
 
