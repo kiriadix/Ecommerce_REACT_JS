@@ -2,7 +2,7 @@ import ItemList from "../ItemList/ItemList";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../utils/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 
 const ItemListContainer = () => {
@@ -12,9 +12,16 @@ const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
 
   const traerData = async() => {
-    const query = collection(db, "items");
 
-    const response = await getDocs(query);
+    let queryRef;
+
+    if (id) {
+      queryRef = query(collection(db, "items"),where("category","==",id));
+    } else {
+      queryRef = collection(db, "items");
+    }
+    
+    const response = await getDocs(queryRef);
 
     const newProducts = response.docs.map(doc =>{
       const newProduct = {
@@ -26,12 +33,7 @@ const ItemListContainer = () => {
 
     })
 
-    if (id) {
-      const newResult = newProducts.filter(r=>r.category === id);
-      setProductos(newResult);
-    } else {
-      setProductos(newProducts);
-    }
+    setProductos(newProducts);
 
   }
 
