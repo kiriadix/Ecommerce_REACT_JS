@@ -1,7 +1,8 @@
 import ItemDetail from "../ItemDetail/ItemDetail"
-import data from "../ItemListContainer/data"
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { db } from "../../utils/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
 
@@ -9,17 +10,21 @@ const ItemDetailContainer = () => {
 
   const [producto, setProducto] = useState({});
 
-  const getItem = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(data);
-    }, 2000);
-  })
+  const getItem = async() => {
+    const query = doc(db, "items", id);
+
+    const response = await getDoc(query);
+
+    const newProduct = {
+      ...response.data(),
+      id: response.id
+    }
+
+    setProducto(newProduct);
+  }
 
   useEffect(() => {
-    getItem.then((result) => {
-      const newResult = result.filter(r=>r.id === parseInt(id));
-      setProducto(newResult[0]);
-    })
+    getItem();
   }, [id])
 
   return (

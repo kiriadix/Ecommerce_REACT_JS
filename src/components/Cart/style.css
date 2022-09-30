@@ -1,4 +1,5 @@
 .itemCard{
+    border: 3px;
     border-style: solid;
     border-color: black;
     border-radius: 50px;
