@@ -1,0 +1,7 @@
+.form-checkout{
+    border: 1px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 20px;
+    padding: 20px;
+}
