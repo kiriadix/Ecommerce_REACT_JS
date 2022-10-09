@@ -1,5 +1,6 @@
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import "./style.css"
 
 const CartItem = ({id, picture, quantity, title, price, removeItem}) => {
   return (

@@ -1,16 +1,42 @@
-import { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { db } from "../../utils/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, writeBatch, doc } from "firebase/firestore";
 import "./style.css"
+import { useState } from 'react';
 
-const CheckoutForm = ({ items, GetTotalPrice, setIdOrder }) => {
+const CheckoutForm = ({ items, GetTotalPrice, setShow , clear}) => {
+
+  const [btn, setBtn] = useState({label:"COMPRAR", disabled:false});
 
   function sendOrder(event) {
     //prevenimos el evento submit
     event.preventDefault();
+
+    //deshabilitamos el boton de compra y cambiamos su label
+    setBtn({label:"..PROCESANDO", disabled:true});
+
+    //Creamos la referencia de donde guardaremos la información de la orden
+    const queryRef = collection(db, "orders");
+    const batch = writeBatch(db);
+
+    //arreglo con formato de items orden
+    const itemsOrden = [];
+
+    //Recorremos items para crear las consultas de actualizacion de stock y el formato correcto de la orden
+    items.forEach(element => {
+
+      batch.update(doc(db, "items", element.id), {"stock": element.stock - element.quantity});
+
+      itemsOrden.push({
+        id:element.id,
+        title:element.title,
+        quantity:element.quantity,
+        price:element.price
+      });
+      
+    });
 
     //Creamos objeto con con los datos de la orden
     const order ={
@@ -19,16 +45,41 @@ const CheckoutForm = ({ items, GetTotalPrice, setIdOrder }) => {
         phone:event.target[1].value,
         email:event.target[2].value
         },
-        items: items,
+        items: itemsOrden,
+        date:new Date().toLocaleDateString(),
         total: GetTotalPrice()
     }
 
-    //Creamos la referencia de donde guardaremos la información de la orden
-    const queryRef = collection(db, "orders");
-
-    //Creamos el documento en firebase
+    //Creamos la orden en firebase
     addDoc( queryRef, order).then(response => {
-      setIdOrder(response.id);
+
+      //actualizamos los stocks
+      batch.commit();
+
+      //mostramos resultado al user
+      setShow({
+        show:true, 
+        variant:"success", 
+        text1:`LA ORDEN: ${response.id}`, 
+        text2:"SE PROCESÓ CORECTAMENTE"
+      });
+
+      //Vaciamos el carrito
+      clear();
+
+    }).catch((e)=>{
+
+      //levantamos alerta al user
+      setShow({
+        show:true, 
+        variant:"danger", 
+        text1:`OCURRIÓ UN ERROR`, 
+        text2:"LA ORDEN NO PUDO SER PROCESADA"
+      });
+
+    }).finally(()=>{
+      // cambiamos el estado del boton
+      setBtn({label:"COMPRAR", disabled:false});
     })
     
   }
@@ -54,9 +105,11 @@ const CheckoutForm = ({ items, GetTotalPrice, setIdOrder }) => {
                 <Form.Control type="email" placeholder="Ingrese Correo" />
             </Form.Group>
 
-            <Button variant="success" type="submit">
-                COMPRAR
-            </Button>
+            <div className='d-flex justify-content-end'>
+              <Button id='comprar' variant="success" type="submit" disabled={btn.disabled}>
+                  {btn.label}
+              </Button>
+            </div>
         </Form>
       </Col>
       <Col xs={3}></Col>

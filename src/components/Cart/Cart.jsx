@@ -4,33 +4,34 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
-import "./style.css"
 import { Link } from 'react-router-dom';
 import CartItem from '../CartItem/CartItem';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
+import AlertContainer from '../AlertContainer/AlertContainer';
+import "./style.css"
 
 const Cart = () => {
   const {items, removeItem, clear, GetTotalPrice} = useContext(CartContext);
 
-  const [idOrder, setIdOrder] = useState("");
+  const [show, setShow] = useState({show:false, variant:"", text1:"", text2:""});
 
   return (
     <Container>
-      <Row>
-        {idOrder && <p> Su orden fue creada exitosamente con el id: {idOrder} </p>}
-      </Row>
       <Row>
         {
           items.length === 0 ? 
           (
             <>
               <Col>
+                <Row>
+                  <AlertContainer show={show} setShow={setShow} />
+                </Row>
                 <Row className='align-items-center justify-content-center'>
                     <h3 className='redText'>EL CARRITO ESTÁ VACÍO</h3>
                 </Row>
                 <Row className='align-items-center justify-content-center' md='auto'>
                   <Link to={`/`}>
-                    <Button variant="dark" onClick={clear}>VER PRODUCTOS</Button>
+                    <Button variant="dark">VER PRODUCTOS</Button>
                   </Link>
                 </Row>
               </Col>
@@ -69,7 +70,10 @@ const Cart = () => {
                 </Row>
                 <hr />
                 <Row>
-                  <CheckoutForm items={items} GetTotalPrice={GetTotalPrice} setIdOrder={setIdOrder} />
+                  <AlertContainer show={show} setShow={setShow} />
+                </Row>
+                <Row>
+                  <CheckoutForm items={items} GetTotalPrice={GetTotalPrice} setShow={setShow} clear={clear} />
                 </Row>
               </Col>
             </>                

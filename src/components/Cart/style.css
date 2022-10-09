@@ -1,18 +1,8 @@
 .itemCard{
-    border: 3px;
+    border: 2px;
     border-style: solid;
     border-color: black;
     border-radius: 50px;
     margin: 15px;
     padding: 10px;
-}
-
-.imgCard{
-    height: 50px;
-    width: 80x;
-
-}
-
-.redText{
-    color: red;
 }
