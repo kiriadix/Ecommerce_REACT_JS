@@ -34,15 +34,15 @@ const ItemCount = ({stock, initial=1, onAdd}) => {
         <>  
             <Container>
                 <Row className="justify-content-center align-items-center">
-                    <Col xs lg="1">
+                    <Col xs="1" sm="1">
                         <Button variant="outline-primary" onClick={resta}>-</Button>
                     </Col>
-                    <Col md="auto">{count}</Col>
-                    <Col xs lg="1">
+                    <Col xs="2" sm="2">{count}</Col>
+                    <Col xs="1" sm="1">
                         <Button variant="outline-primary" onClick={suma}>+</Button>
                     </Col>
                 </Row>
-                <hr></hr>
+                <Row><p></p></Row>
                 <Row className="justify-content-center align-items-center">
                     <Col >
                         <Button variant="success" onClick={comprar}> Agregar al carrito </Button>

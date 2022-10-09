@@ -25,11 +25,17 @@ const ItemDetail = ({item}) => {
           <Col>
             <Row>
               <h1>{item.title}</h1>
+              <h6>Disponibilidad: {item.stock} </h6>
             </Row>
+
+            <hr></hr>
+
             <Row className='price_color'>
               <h3>${item.price}</h3>
             </Row>
+
             <hr></hr>
+
             <Row>
               {<ItemCount stock={item.stock} onAdd={onAdd}/>}
             </Row>

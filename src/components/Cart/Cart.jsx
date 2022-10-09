@@ -62,7 +62,7 @@ const Cart = () => {
                       />  
                     </Row>
                 ))}
-                <Row className='align-items-center justify-content-center'>
+                <Row className='align-items-center justify-content-center redText'>
                   <Col><h2>TOTAL: $ {GetTotalPrice()}</h2></Col>
                   <Col>
                     <Button variant="danger" onClick={clear}>VACIAR CARRITO</Button>
