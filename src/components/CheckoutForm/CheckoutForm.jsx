@@ -14,6 +14,37 @@ const CheckoutForm = ({ items, GetTotalPrice, setShow , clear}) => {
     //prevenimos el evento submit
     event.preventDefault();
 
+  
+    //validamos datos del formulario
+    const nameUser = event.target[0].value;
+    const phoneUser = event.target[1].value;
+    const emailUser = event.target[2].value;
+
+    if (nameUser === '' || phoneUser === '' || emailUser === '') {
+      //alguno de los campos esta vacio
+      setShow({
+        show:true, 
+        variant:"danger", 
+        text1:`DEBE LLENAR TODOS LOS CAMPOS`, 
+        text2:""
+      });
+
+      return;
+
+    } else if (isNaN(phoneUser)) {
+
+      //el telefono no es numerico
+      setShow({
+        show:true, 
+        variant:"danger", 
+        text1:'DEBE INGRESAR SOLO NÚMEROS EN EL CAMPO DE TELÉFONO', 
+        text2:""
+      });
+
+      return;
+      
+    }
+
     //deshabilitamos el boton de compra y cambiamos su label
     setBtn({label:"..PROCESANDO", disabled:true});
 
@@ -41,9 +72,9 @@ const CheckoutForm = ({ items, GetTotalPrice, setShow , clear}) => {
     //Creamos objeto con con los datos de la orden
     const order ={
         buyer:{
-        name:event.target[0].value,
-        phone:event.target[1].value,
-        email:event.target[2].value
+        name:nameUser,
+        phone:phoneUser,
+        email:emailUser
         },
         items: itemsOrden,
         date:new Date().toLocaleDateString(),
@@ -92,7 +123,7 @@ const CheckoutForm = ({ items, GetTotalPrice, setShow , clear}) => {
             <Form.Label> <h4> DATOS DE COMPRA </h4> </Form.Label>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Nombre Apellido:</Form.Label>
-                <Form.Control type="text" placeholder="Ingrese Nombre y Apellido" />
+                <Form.Control type="text" pattern="^[a-zA-Z ]+$" placeholder="Ingrese Nombre y Apellido" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
