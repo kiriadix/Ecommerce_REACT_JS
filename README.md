@@ -1,6 +1,6 @@
 # Aldo Vallera Ecommerce
 
-Este proyecto esta realizado para la superacion del curso ReactJS en coderhouse
+El proyecto es un Ecommerce que se venden Roperos de 3 o 2 puertas donde el cliente podra observar la totalidad de artículos ofertados, filtrar entre la 2 principales categorías, acceder a la informacion detallada de cada uno de los artículos, seleccionar la cantidad que desee sengun el stock diponible, añadir al carrito diferentes articulos e insertar toda la informarción pertinente para generar una compra obteniendo su número de pedido. 
 
 ## Estado del proyecto
 
