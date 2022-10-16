@@ -4,12 +4,15 @@ Este proyecto esta realizado para la superacion del curso ReactJS en coderhouse
 
 ## Estado del proyecto
 
-Actualmente el proyecto se encuentra a un 60% de su objetivo
+Actualmente el proyecto se encuentra a un 100% de su objetivo
 
 ## Tecnologias
 
 ### ReactJS
-### bootstrap
+### Bootstrap
+
+## Bases de Datos no Relacionales
+### Firebase
 
 ## Importante
 
